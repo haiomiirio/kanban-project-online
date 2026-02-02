@@ -48,13 +48,13 @@ function App() {
   return (
     <ClerkProvider 
       publishableKey={PUBLISHABLE_KEY}
-      signInUrl="/kanban-react/login"
-      signUpUrl="/kanban-react/signup"
-      signInFallbackRedirectUrl="/kanban-react/kanban"
-      signUpFallbackRedirectUrl="/kanban-react/kanban"
-      afterSignOutUrl="/kanban-react/"
+      signInUrl="/kanban-project-online/login"
+      signUpUrl="/kanban-project-online/signup"
+      signInFallbackRedirectUrl="/kanban-project-online/kanban"
+      signUpFallbackRedirectUrl="/kanban-project-online/kanban"
+      afterSignOutUrl="/kanban-project-online/"
     >
-      <BrowserRouter basename="/kanban-react">
+      <BrowserRouter basename="/kanban-project-online">
         <Header/>
         <Routes>
           {/* Rotas públicas */}

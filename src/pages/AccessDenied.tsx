@@ -14,7 +14,7 @@ const Locked = () => {
   return (
     <section className="flex items-center justify-center sm:flex-row flex-col min-h-screen lg:px-[242px] pt-8 md:pt-0">
       <figure className="flex-1 px-[96px] sm:px-[0]">
-        <img src="/kanban-react/images/rectangle-16.png" alt="" className="mx-auto"/>
+        <img src="/kanban-project-online/images/rectangle-16.png" alt="" className="mx-auto"/>
       </figure>
       <div className="flex-1 text-center md:text-left pb-20 md:pb-0">
         <h2 className="text-[96px]">403</h2>

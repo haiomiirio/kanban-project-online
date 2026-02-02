@@ -66,7 +66,7 @@ const Login = () => {
           password: password,
         });
         // Redirecionar para o dashboard ou outra página após login bem-sucedido
-        window.location.href = '/kanban-react/kanban';
+        window.location.href = '/kanban-project-online/kanban';
       } catch (err) {
         console.log("Login failed:", err);
       }
@@ -76,14 +76,14 @@ const Login = () => {
   return (
     <div className="flex lg:justify-between justify-center relative  lg:min-h-[calc(100vh-234px)] ">
       <img
-        src="/kanban-react/images/rectangle-2.png"
+        src="/kanban-project-online/images/rectangle-2.png"
         alt=""
         className="lg:hidden visible absolute top-0 left-0 w-full h-full object-cover opacity-30"
       />
       <div className=" sm:w-full sm:p-[44px] lg:p-0 flex">
         <div className="flex-1 hidden lg:block">
           <img
-            src="/kanban-react/images/bg-login.png"
+            src="/kanban-project-online/images/bg-login.png"
             alt=""
             className="top-0 left-0 w-full h-full object-cover"
           />
@@ -99,7 +99,7 @@ const Login = () => {
             <p className="text-[#331436] sm:text-left text-center text-sm lg:text-base mb-6">
               New here? Let’s take you to{" "}
               <a
-                href="/kanban-react/signup"
+                href="/kanban-project-online/signup"
                 className="text-[16px] font-bold text-blue-500 text-center md:text-right hover:underline cursor-pointer"
               >
                 {" "}
@@ -167,9 +167,9 @@ const Login = () => {
                   <OauthSignIn
                     providerName="Facebook"
                     strategy="oauth_facebook"
-                    logo="/kanban-react/images/social-media-signup-social-media-logo.face.png"
-                    redirectUrl="/kanban-react/sso-callback"
-                    redirectUrlComplete="/kanban-react/kanban"
+                    logo="/kanban-project-online/images/social-media-signup-social-media-logo.face.png"
+                    redirectUrl="/kanban-project-online/sso-callback"
+                    redirectUrlComplete="/kanban-project-online/kanban"
                   />
                 </div>
               </div>
@@ -178,9 +178,9 @@ const Login = () => {
                   <OauthSignIn
                     providerName="Google"
                     strategy="oauth_google"
-                    logo="/kanban-react/images/social-media-signup-social-media-logo.jpg"
-                    redirectUrl="/kanban-react/sso-callback"
-                    redirectUrlComplete="/kanban-react/kanban"
+                    logo="/kanban-project-online/images/social-media-signup-social-media-logo.jpg"
+                    redirectUrl="/kanban-project-online/sso-callback"
+                    redirectUrlComplete="/kanban-project-online/kanban"
                   />
                 </div>
               </div>

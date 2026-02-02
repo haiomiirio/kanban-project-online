@@ -115,7 +115,7 @@ const CustomSignUp = () => {
           console.log('Signup complete, setting active session...');
           await setActive({ session: response.createdSessionId });
           console.log('Redirecting to Kanban...');
-          window.location.href = "/kanban-react/kanban";
+          window.location.href = "/kanban-project-online/kanban";
           return;
         }
 
@@ -145,7 +145,7 @@ const CustomSignUp = () => {
           <p className="text-[#331436] sm:text-left text-center text-sm lg:text-base mb-6">
             Already have an account?{" "}
             <a
-              href="/kanban-react/login"
+              href="/kanban-project-online/login"
               className="font-bold text-blue-500 text-center md:text-right hover:underline cursor-pointer"
             >
               Log in.
@@ -286,9 +286,9 @@ const CustomSignUp = () => {
                 <OauthSignUp
                   providerName="Facebook"
                   strategy="oauth_facebook"
-                  logo="/kanban-react/images/social-media-signup-social-media-logo.face.png"
-                  redirectUrl="/kanban-react/sso-callback"
-                  redirectUrlComplete="/kanban-react/kanban"
+                  logo="/kanban-project-online/images/social-media-signup-social-media-logo.face.png"
+                  redirectUrl="/kanban-project-online/sso-callback"
+                  redirectUrlComplete="/kanban-project-online/kanban"
                 />
               </div>
             </div>
@@ -297,9 +297,9 @@ const CustomSignUp = () => {
                 <OauthSignUp
                   providerName="Google"
                   strategy="oauth_google"
-                  logo="/kanban-react/images/social-media-signup-social-media-logo.jpg"
-                  redirectUrl="/kanban-react/sso-callback"
-                  redirectUrlComplete="/kanban-react/kanban"
+                  logo="/kanban-project-online/images/social-media-signup-social-media-logo.jpg"
+                  redirectUrl="/kanban-project-online/sso-callback"
+                  redirectUrlComplete="/kanban-project-online/kanban"
                 />
               </div>
             </div>
