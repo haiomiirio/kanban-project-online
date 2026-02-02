@@ -6,7 +6,7 @@ const MainSection = () => {
   return (
     <div
       className="relative flex flex-row justify-center items-start bg-cover bg-center z-[0] lg:h-[644px] "
-      style={{ backgroundImage: `url('./images/home_main_background.jpeg')` }}
+      style={{ backgroundImage: `url('/kanban-react/images/home_main_background.jpeg')` }}
     >
       {/* Fundo com a imagem de fundo */}
       <div className=" relative  lg:w-[1179px]  flex flex-col lg:flex-row items-center justify-between gap-7 md:gap-[60px] py-14  px-5">
@@ -40,7 +40,7 @@ const MainSection = () => {
         {/* Imagem da menina no meio */}
         <div className="absolute hidden bottom-[-320px] right-[170px]  lg:block ">
           <img
-            src="./images/RETRAT_1-removebg 1.png"
+            src="/kanban-react/images/RETRAT_1-removebg 1.png"
             alt="Retrato da Menina"
             className="w-full h-auto "
           />

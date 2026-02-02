@@ -1,14 +1,17 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSignUp } from "@clerk/clerk-react";
-import ManInPc from '../../public/images/bg-mobile-signup.png';
+import { useSignUp, useUser } from "@clerk/clerk-react";
+import ManInPc from '../images/bg-mobile-signup.png';
 import Button from '../components/Button';
 import OauthSignUp from '../components/OauthSignUpSocialButton';
 import { useDispatch } from 'react-redux';
 import { setPage } from '../redux/pageSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CustomSignUp = () => {
   const { signUp, setActive } = useSignUp();
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [firstname, setFirstName] = useState<string>('');
@@ -25,7 +28,12 @@ const CustomSignUp = () => {
 
   useEffect(() => {
     dispatch(setPage('login'));
-  }, [dispatch]);
+    
+    // Redirecionar se já estiver autenticado
+    if (isSignedIn) {
+      navigate('/kanban');
+    }
+  }, [dispatch, isSignedIn, navigate]);
 
   const validateFirstName = (value: string): boolean => {
     const firstNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ']{2,}$/;
@@ -94,29 +102,30 @@ const CustomSignUp = () => {
         const response = await signUp.create({
           emailAddress: email,
           password,
-          first_name: firstname,
-          last_name: lastname,
+          firstName: firstname,
+          lastName: lastname,
           unsafeMetadata: {
             jobposition: jobposition,
           },
         });
 
+        console.log('Signup response:', response.status, response);
+
         if (response.status === "complete") {
+          console.log('Signup complete, setting active session...');
           await setActive({ session: response.createdSessionId });
-          window.location.href = "/kanban";
+          console.log('Redirecting to Kanban...');
+          window.location.href = "/kanban-react/kanban";
           return;
         }
 
         if (response.status === "missing_requirements") {
-          console.log('Missing requirements:', response.requirements);
-          if (response.requirements && response.requirements.includes("email_verification")) {
-            console.log('Preparing email verification...');
-            await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-          }
+          console.log('Missing requirements:', response);
+          setError("Additional verification required. Please complete the signup process.");
         }
-      } catch (err) {
+      } catch (err: any) {
         console.error('Sign-up error:', err);
-        setError(err.message || "An unexpected error occurred. Please try again.");
+        setError(err.errors?.[0]?.message || err.message || "An unexpected error occurred. Please try again.");
       }
     }
   };
@@ -124,7 +133,7 @@ const CustomSignUp = () => {
   return (
     <div className="flex lg:justify-between justify-center relative lg:min-h-[calc(100vh-234px)]">
       <img
-        src="/public/images/bg-mobile-signup.png"
+        src={ManInPc}
         alt=""
         className="lg:hidden visible absolute top-0 left-0 w-full h-full object-cover opacity-30"
       />
@@ -136,7 +145,7 @@ const CustomSignUp = () => {
           <p className="text-[#331436] sm:text-left text-center text-sm lg:text-base mb-6">
             Already have an account?{" "}
             <a
-              href="/login"
+              href="/kanban-react/login"
               className="font-bold text-blue-500 text-center md:text-right hover:underline cursor-pointer"
             >
               Log in.
@@ -277,9 +286,9 @@ const CustomSignUp = () => {
                 <OauthSignUp
                   providerName="Facebook"
                   strategy="oauth_facebook"
-                  logo="/public/images/social-media-signup-social-media-logo.face.png"
-                  redirectUrl="/custom-callback"
-                  redirectUrlComplete="/kanban"
+                  logo="/kanban-react/images/social-media-signup-social-media-logo.face.png"
+                  redirectUrl="/kanban-react/sso-callback"
+                  redirectUrlComplete="/kanban-react/kanban"
                 />
               </div>
             </div>
@@ -288,9 +297,9 @@ const CustomSignUp = () => {
                 <OauthSignUp
                   providerName="Google"
                   strategy="oauth_google"
-                  logo="/public/images/social-media-signup-social-media-logo.jpg"
-                  redirectUrl="/custom-callback"
-                  redirectUrlComplete="/kanban"
+                  logo="/kanban-react/images/social-media-signup-social-media-logo.jpg"
+                  redirectUrl="/kanban-react/sso-callback"
+                  redirectUrlComplete="/kanban-react/kanban"
                 />
               </div>
             </div>

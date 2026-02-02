@@ -13,7 +13,7 @@ const PageNotFound = () => {
   return (
     <section className="flex items-center justify-center sm:flex-row flex-col sm:h-[calc(100vh-222px)] lg:px-[242px]">
       <figure className="flex-1 xl:pr-20 sm:pr-2 md:px-auto lg:px-[95px] sm:px-2 px-[95px]">
-        <img src="/images/rectangle-15.png" alt="" className="mx-auto"/>
+        <img src="/kanban-react/images/rectangle-15.png" alt="" className="mx-auto"/>
       </figure>
       <div className="flex-1 xl:pl-20 sm:pl-2 text-center md:text-left pb-20 -mt-10 md:mt-0">
         <h2 className="text-[96px]">404</h2>

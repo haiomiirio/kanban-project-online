@@ -23,6 +23,11 @@ const Header: React.FC = () => {
     navigate('/');
   };
 
+  const handleLogout = async () => {
+    await signOut();
+    navigate('/');
+  };
+
   const linkClass = `text-white  py-2 hover:underline`
   const renderButtons = () => {
     switch (currentPage) {
@@ -54,9 +59,15 @@ const Header: React.FC = () => {
           <Link to="/profile" className={linkClass}>
             Profile
           </Link>
+          <button
+            onClick={handleLogout}
+            className="text-white py-2 px-4 bg-red-600 hover:bg-red-700 rounded-md transition-colors"
+          >
+            Logout
+          </button>
           <div className='hidden  md:flex relative justify-between border-[#0000006f] p-2 rounded-md border-[1px] md:w-[133px] lg:w-[200px] '>
                     <input  className='bg-[#00000000]  md:text-sm ' type="text" id="txtBusca" placeholder="Search in site"/>
-                    <img className=' absolute right-2' src="../../public/images/search3.png" id="btnBusca" alt="Buscar"/>
+                    <img className=' absolute right-2' src="/kanban-react/images/search3.png" id="btnBusca" alt="Buscar"/>
           </div>
         </>
         );
@@ -97,7 +108,7 @@ const Header: React.FC = () => {
           </button>
           <div className=' flex relative justify-between w-9 border-[#0000006f] p-1 rounded-md border-[1px] '>
                     <input  className='bg-[#00000000]  w-0 md:text-sm ' type="text" id="txtBusca" placeholder=""/>
-                    <img className=' absolute' src="../../public/images/search3.png" id="btnBusca" alt="Buscar"/>
+                    <img className=' absolute' src="/kanban-react/images/search3.png" id="btnBusca" alt="Buscar"/>
           </div>
         </div>  
       </> 

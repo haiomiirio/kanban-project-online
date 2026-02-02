@@ -45,24 +45,23 @@ function App() {
   }, [dispatch]);
 
 
-console.log('dados centrais',dados);
-console.log('dados dadosUsers',dados);
-
-
-
-
   return (
     <ClerkProvider 
-      publishableKey={PUBLISHABLE_KEY} 
-      afterSignOutUrl="/"
+      publishableKey={PUBLISHABLE_KEY}
+      signInUrl="/kanban-react/login"
+      signUpUrl="/kanban-react/signup"
+      signInFallbackRedirectUrl="/kanban-react/kanban"
+      signUpFallbackRedirectUrl="/kanban-react/kanban"
+      afterSignOutUrl="/kanban-react/"
     >
-      <BrowserRouter>
+      <BrowserRouter basename="/kanban-react">
         <Header/>
         <Routes>
           {/* Rotas públicas */}
           <Route path='/' element={<Home/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/signup' element={<SignUp/>} />
+          <Route path='/sso-callback' element={<div>Processando...</div>} />
 
           {/* Rotas protegidas */}
           <Route 

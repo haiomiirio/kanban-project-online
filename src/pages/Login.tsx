@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPage } from '../redux/pageSlice';
-import { useSignIn } from "@clerk/clerk-react";
+import { useSignIn, useUser } from "@clerk/clerk-react";
 import OauthSignIn from '../components/OauthSignInSocialButton';
 import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
   const {signIn, isLoaded} = useSignIn();
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -19,7 +22,12 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(setPage('login'));
-  }, [dispatch]);
+    
+    // Redirecionar se já estiver autenticado
+    if (isSignedIn) {
+      navigate('/kanban');
+    }
+  }, [dispatch, isSignedIn, navigate]);
 
   const validateEmail = (value: string): boolean => {
     const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
@@ -58,7 +66,7 @@ const Login = () => {
           password: password,
         });
         // Redirecionar para o dashboard ou outra página após login bem-sucedido
-        window.location.href = '/kanban';
+        window.location.href = '/kanban-react/kanban';
       } catch (err) {
         console.log("Login failed:", err);
       }
@@ -68,14 +76,14 @@ const Login = () => {
   return (
     <div className="flex lg:justify-between justify-center relative  lg:min-h-[calc(100vh-234px)] ">
       <img
-        src="/public/images/rectangle-2.png"
+        src="/kanban-react/images/rectangle-2.png"
         alt=""
         className="lg:hidden visible absolute top-0 left-0 w-full h-full object-cover opacity-30"
       />
       <div className=" sm:w-full sm:p-[44px] lg:p-0 flex">
         <div className="flex-1 hidden lg:block">
           <img
-            src="/public/images/bg-login.png"
+            src="/kanban-react/images/bg-login.png"
             alt=""
             className="top-0 left-0 w-full h-full object-cover"
           />
@@ -91,7 +99,7 @@ const Login = () => {
             <p className="text-[#331436] sm:text-left text-center text-sm lg:text-base mb-6">
               New here? Let’s take you to{" "}
               <a
-                href="/signup"
+                href="/kanban-react/signup"
                 className="text-[16px] font-bold text-blue-500 text-center md:text-right hover:underline cursor-pointer"
               >
                 {" "}
@@ -159,9 +167,9 @@ const Login = () => {
                   <OauthSignIn
                     providerName="Facebook"
                     strategy="oauth_facebook"
-                    logo="/public/images/social-media-signup-social-media-logo.face.png"
-                    redirectUrl="/custom-callback"
-                    redirectUrlComplete="/kanban"
+                    logo="/kanban-react/images/social-media-signup-social-media-logo.face.png"
+                    redirectUrl="/kanban-react/sso-callback"
+                    redirectUrlComplete="/kanban-react/kanban"
                   />
                 </div>
               </div>
@@ -170,9 +178,9 @@ const Login = () => {
                   <OauthSignIn
                     providerName="Google"
                     strategy="oauth_google"
-                    logo="/public/images/social-media-signup-social-media-logo.jpg"
-                    redirectUrl="/custom-callback"
-                    redirectUrlComplete="/kanban"
+                    logo="/kanban-react/images/social-media-signup-social-media-logo.jpg"
+                    redirectUrl="/kanban-react/sso-callback"
+                    redirectUrlComplete="/kanban-react/kanban"
                   />
                 </div>
               </div>

@@ -6,13 +6,13 @@ import FramesHomePage from "./FramesHomePage"; // Importando o componente de fra
 import SubscribeHomePage from "./SubscribeHomePage"; // Importando o componente de inscrição
 
 // Imagens para o conteúdo
-import cardImage1 from '../../public/images/CardPaginaHome1.png';
-import cardImage2 from '../../public/images/CardPaginaHome2.png';
-import cardImage3 from '../../public/images/CardPaginaHome3.png';
-import tool1 from '../../public/images/Frame 1.png';
-import tool2 from '../../public/images/Frame 2.png';
-import tool3 from '../../public/images/Frame 3.png';
-import tool4 from '../../public/images/Frame 4.png';
+import cardImage1 from '../images/CardPaginaHome1.png';
+import cardImage2 from '../images/CardPaginaHome2.png';
+import cardImage3 from '../images/CardPaginaHome3.png';
+import tool1 from '../images/Frame 1.png';
+import tool2 from '../images/Frame 2.png';
+import tool3 from '../images/Frame 3.png';
+import tool4 from '../images/Frame 4.png';
 
 const TheManager = () => {
   // Dados para a lista de ferramentas

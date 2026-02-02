@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { OAuthStrategy } from "@clerk/types";
 import { useSignUp } from "@clerk/clerk-react";
 
@@ -14,25 +14,41 @@ const OauthSignUp: React.FC<OauthSignUpProps> = ({
   providerName,
   strategy,
   logo,
-  redirectUrl = "/sign-up/sso-callback",
-  redirectUrlComplete = "/kanban",
+  redirectUrl = "http://localhost:5173/kanban-react/sso-callback",
+  redirectUrlComplete = "http://localhost:5173/kanban-react/kanban",
 }) => {
-  const { signUp } = useSignUp();
+  const { signUp, isLoaded } = useSignUp();
+  const [isLoading, setIsLoading] = useState(false);
 
-  if (!signUp) return null;
-
-  const handleSignUp = () => {
-    signUp.authenticateWithRedirect({
-      strategy,
-      redirectUrl,
-      redirectUrlComplete,
-    });
+  const handleSignUp = async () => {
+    if (isLoading) return;
+    
+    try {
+      setIsLoading(true);
+      console.log('Attempting Google sign up...', { isLoaded, signUp: !!signUp });
+      
+      if (!signUp) {
+        console.error('signUp not available');
+        setIsLoading(false);
+        return;
+      }
+      
+      await signUp.authenticateWithRedirect({
+        strategy,
+        redirectUrl,
+        redirectUrlComplete,
+      });
+    } catch (error) {
+      console.error(`Error signing up with ${providerName}:`, error);
+      setIsLoading(false);
+    }
   };
 
   return (
     <button
       onClick={handleSignUp}
-      className=""
+      type="button"
+      className="cursor-pointer hover:opacity-80 transition-opacity"
     >
       <img
         src={logo}
