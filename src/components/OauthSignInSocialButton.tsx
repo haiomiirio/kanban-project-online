@@ -14,8 +14,8 @@ const OauthSignIn: React.FC<OauthSignInProps> = ({
   providerName,
   strategy,
   logo,
-  redirectUrl = "http://localhost:5173/kanban-project-online/sso-callback",
-  redirectUrlComplete = "http://localhost:5173/kanban-project-online/kanban",
+  redirectUrl = `${window.location.origin}/kanban-project-online/sso-callback`,
+  redirectUrlComplete = `${window.location.origin}/kanban-project-online/kanban`,
 }) => {
   const { signIn, isLoaded } = useSignIn();
   const [isLoading, setIsLoading] = useState(false);
