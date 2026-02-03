@@ -2,6 +2,8 @@
 
 > Aplicação web de gerenciamento de tarefas no estilo Kanban, desenvolvida com React e TypeScript, focada em organização, colaboração e boa experiência do usuário.
 
+**🔗 [Acesse o Projeto Online](https://haiomiirio.github.io/kanban-project-online/kanban-react/)**
+
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://haiomiirio.github.io/kanban-project-online/kanban-react/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://reactjs.org/)
