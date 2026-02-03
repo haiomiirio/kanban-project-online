@@ -25,7 +25,7 @@ import { fetchTasks } from "./redux/thunks/tasksThunks";
 import { fetchUsers } from "./redux/thunks/usersThunks";
 
 // Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || 'pk_test_demo_key_for_build_only'
 
 function App() {
 
@@ -38,35 +38,6 @@ function App() {
       dispatch((fetchTasks()));
       dispatch((fetchUsers()));
   }, [dispatch]);
-
-  // Se não houver chave do Clerk, renderiza sem autenticação (modo demo)
-  if (!PUBLISHABLE_KEY) {
-    return (
-      <BrowserRouter basename="/kanban-project-online">
-        <Header/>
-        <Routes>
-          {/* Rotas públicas */}
-          <Route path='/' element={<Home/>} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/signup' element={<SignUp/>} />
-          <Route path='/sso-callback' element={<div>Processando...</div>} />
-
-          {/* Rotas sem proteção no modo demo */}
-          <Route path='/kanban' element={<Kanban/>} />
-          <Route path='/delete' element={<DeleteUserForm/>} />
-          <Route path='/settings' element={<Settings/>} />
-          <Route path='/profile' element={<Profile/>} />
-
-          {/* Rota 404 */}
-          <Route path='/*' element={<PageNotFound/>} />
-
-          {/* Rota 403 */}
-          <Route path='/denied' element={<AccessDenied/>} />
-        </Routes> 
-        <Footer/>
-      </BrowserRouter>
-    );
-  }
 
   return (
     <ClerkProvider 
