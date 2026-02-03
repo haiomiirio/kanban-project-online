@@ -39,15 +39,32 @@ function App() {
       dispatch((fetchUsers()));
   }, [dispatch]);
 
-  // Se não houver chave do Clerk, mostra mensagem de erro
+  // Se não houver chave do Clerk, renderiza sem autenticação (modo demo)
   if (!PUBLISHABLE_KEY) {
     return (
-      <div style={{ padding: '40px', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-        <h1>⚠️ Configuração Necessária</h1>
-        <p>A chave do Clerk não foi configurada.</p>
-        <p>Adicione <code>VITE_CLERK_PUBLISHABLE_KEY</code> às variáveis de ambiente.</p>
-        <p>Consulte o <a href="https://github.com/haiomiirio/kanban-project-online/blob/main/GITHUB_PAGES_SETUP.md">GITHUB_PAGES_SETUP.md</a> para mais informações.</p>
-      </div>
+      <BrowserRouter basename="/kanban-project-online">
+        <Header/>
+        <Routes>
+          {/* Rotas públicas */}
+          <Route path='/' element={<Home/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/signup' element={<SignUp/>} />
+          <Route path='/sso-callback' element={<div>Processando...</div>} />
+
+          {/* Rotas sem proteção no modo demo */}
+          <Route path='/kanban' element={<Kanban/>} />
+          <Route path='/delete' element={<DeleteUserForm/>} />
+          <Route path='/settings' element={<Settings/>} />
+          <Route path='/profile' element={<Profile/>} />
+
+          {/* Rota 404 */}
+          <Route path='/*' element={<PageNotFound/>} />
+
+          {/* Rota 403 */}
+          <Route path='/denied' element={<AccessDenied/>} />
+        </Routes> 
+        <Footer/>
+      </BrowserRouter>
     );
   }
 
