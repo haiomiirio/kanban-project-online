@@ -102,7 +102,21 @@ Ao longo do desenvolvimento, trabalhei conceitos importantes como autenticação
 
 6. **Acesse a aplicação**
    
-   👉 [http://localhost:5173/kanban-react/](http://localhost:5173/kanban-react/)
+   👉 [http://localhost:5173/kanban-project-online/](http://localhost:5173/kanban-project-online/)
+
+## 🚀 Deploy no GitHub Pages
+
+Para fazer o deploy no GitHub Pages, consulte o guia detalhado em [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md).
+
+**Resumo rápido:**
+1. Configure os secrets no GitHub (Settings → Secrets and variables → Actions):
+   - `VITE_CLERK_PUBLISHABLE_KEY`
+   - `CLERK_SECRET_KEY`
+   - `VITE_API_BASE_URL` (URL do seu backend em produção)
+2. Faça push para a branch `main`
+3. O GitHub Actions fará o deploy automaticamente
+
+⚠️ **Importante**: O site precisa de um backend em produção. Localhost não funciona no GitHub Pages!
 
 ## 📁 Estrutura do Projeto
 

@@ -27,11 +27,6 @@ import { fetchUsers } from "./redux/thunks/usersThunks";
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error('Add your Clerk Publishable Key to the .env.local file')
-}
-
-
 function App() {
 
   
@@ -44,6 +39,17 @@ function App() {
       dispatch((fetchUsers()));
   }, [dispatch]);
 
+  // Se não houver chave do Clerk, mostra mensagem de erro
+  if (!PUBLISHABLE_KEY) {
+    return (
+      <div style={{ padding: '40px', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
+        <h1>⚠️ Configuração Necessária</h1>
+        <p>A chave do Clerk não foi configurada.</p>
+        <p>Adicione <code>VITE_CLERK_PUBLISHABLE_KEY</code> às variáveis de ambiente.</p>
+        <p>Consulte o <a href="https://github.com/haiomiirio/kanban-project-online/blob/main/GITHUB_PAGES_SETUP.md">GITHUB_PAGES_SETUP.md</a> para mais informações.</p>
+      </div>
+    );
+  }
 
   return (
     <ClerkProvider 
