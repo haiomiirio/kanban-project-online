@@ -1,205 +1,130 @@
-# 🎯 Project Manager - Kanban Board Application
+Project Manager – Kanban Board
 
-> A modern, full-stack project management application built with React, TypeScript, and real-time collaboration features. Developed as part of a technical challenge at UOL.
+Aplicação web de gerenciamento de tarefas no estilo Kanban, desenvolvida com React e TypeScript, focada em organização, colaboração e boa experiência do usuário.
 
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://seu-usuario.github.io/kanban-project-online/kanban-react/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)](https://tailwindcss.com/)
+Este projeto foi desenvolvido durante meu período de estágio na Compass UOL, como parte de um desafio técnico, aplicando práticas modernas de desenvolvimento frontend.
 
-## 📖 About The Project
+🔗 Live Demo
+React • TypeScript • Tailwind CSS
 
-Project Manager is a comprehensive Kanban board application designed to streamline team collaboration and task management. The application implements modern web development practices, featuring authentication, real-time updates, and an intuitive drag-and-drop interface.
+📖 Sobre o Projeto
 
-**Key Highlights:**
-- 🔐 Secure authentication with Clerk (Email, Password, OAuth)
-- 📊 Dynamic Kanban boards with drag-and-drop functionality
-- 👥 User management and task assignment
-- 📱 Fully responsive design (mobile-first approach)
-- 🎨 Modern UI with Tailwind CSS
-- ⚡ Fast performance with Vite
-- 🔄 State management with Redux Toolkit
+O Project Manager é uma aplicação de Kanban pensada para facilitar o acompanhamento de tarefas e o trabalho em equipe. O foco foi criar uma solução clara, funcional e responsiva, usando tecnologias atuais do ecossistema React.
 
-## :camera: Preview
+Ao longo do desenvolvimento, trabalhei conceitos importantes como autenticação, gerenciamento de estado, organização de componentes e boas práticas de UI.
 
-![kanban Preview](src/assets/readMe_preview/kanban.gif)
+✨ Funcionalidades
+🗂️ Gerenciamento de Tarefas
 
-## ✨ Features
+Criação, edição e exclusão de tarefas
 
-### 🎯 Task Management
-- Create, edit, and delete tasks with rich details
-- Organize tasks across customizable columns (To Do, In Progress, Done)
-- Drag-and-drop interface for intuitive task movement
-- Task priority levels and status tracking
-- Task assignment to team members
+Organização por colunas (To Do, In Progress, Done)
 
-### 👤 User Management
-- Secure user authentication (Email/Password + OAuth)
-- User profile management
-- Role-based access control
-- Team member assignment and tracking
+Drag and drop para movimentação intuitiva
 
-### 🎨 User Experience
-- Responsive design optimized for all devices
-- Smooth animations and transitions
-- Dark mode support
-- Intuitive navigation
-- Real-time updates
+Definição de prioridade e status
 
-### 🔒 Security
-- JWT-based authentication via Clerk
-- Protected routes
-- Secure API endpoints
-- Environment variable configuration
+Atribuição de tarefas a usuários
 
-## 🛠️ Tech Stack
+👤 Usuários e Autenticação
 
-### Frontend
-- **React 18.3** - UI library
-- **TypeScript 5.6** - Type-safe JavaScript
-- **Vite 6.0** - Build tool and dev server
-- **Tailwind CSS 3.4** - Utility-first CSS framework
-- **Redux Toolkit 2.5** - State management
-- **React Router 7.1** - Client-side routing
-- **React Beautiful DnD** - Drag and drop
+Login seguro com Clerk (Email/Senha e OAuth)
 
-### Backend & Authentication
-- **Clerk 5.21** - Authentication and user management
-- **JSON Server 1.0** - Mock REST API
-- **Axios** - HTTP client
+Rotas protegidas
 
-### Development Tools
-- **ESLint** - Code linting
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixes
+Gerenciamento de sessão
 
-## 🚀 Getting Started
+🎨 Experiência do Usuário
 
-### Prerequisites
-- Node.js 20+ and npm
-- Git
-- Clerk account ([Sign up free](https://clerk.com/))
+Layout totalmente responsivo
 
-### Installation
+Interface moderna com Tailwind CSS
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/seu-usuario/kanban-project-online.git
-   cd kanban-project-online
-   ```
+Suporte a modo escuro
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Navegação simples e fluida
 
-3. **Configure Clerk Authentication**
-   - Create a [Clerk account](https://clerk.com/)
-   - Create a new application in Clerk Dashboard
-   - Enable Email and Password authentication
-   - Enable Google OAuth (optional)
-   - Add redirect URLs:
-     - `http://localhost:5173/kanban-react/sso-callback`
-     - `http://localhost:5173/kanban-react/kanban`
+🛠️ Tecnologias Utilizadas
+Frontend
 
-4. **Set up environment variables**
-   
-   Create `.env.local` in the root directory:
-   ```env
-   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
-   CLERK_SECRET_KEY=your_clerk_secret_key_here
-   ```
+React 18
 
-5. **Start JSON Server (Terminal 1)**
-   ```bash
-   npx json-server db.json --port 3000
-   ```
+TypeScript
 
-6. **Start development server (Terminal 2)**
-   ```bash
-   npm run dev
-   ```
+Vite
 
-7. **Access the application**
-   
-   Open [http://localhost:5173/kanban-react/](http://localhost:5173/kanban-react/)
+Tailwind CSS
 
-## 📦 Build for Production
+Redux Toolkit
 
-```bash
-npm run build
-npm run preview
-```
+React Router
 
-The build output will be in the `dist/` directory.
+React Beautiful DnD
 
-## 🌐 Deployment
+Backend / Auth
 
-This project is configured for automatic deployment to GitHub Pages. Every push to `main` branch triggers a build and deploy.
+Clerk (autenticação)
 
-**Live URL:** `https://seu-usuario.github.io/kanban-project-online/kanban-react/`
+JSON Server (API mock)
 
-## 📁 Project Structure
+Axios
 
-```
-kanban-project-online/
-├── src/
-│   ├── assets/          # Images and icons
-│   ├── components/      # Reusable React components
-│   ├── hooks/          # Custom React hooks
-│   ├── interface/      # TypeScript interfaces
-│   ├── pages/          # Page components
-│   ├── redux/          # Redux store and slices
-│   │   └── thunks/     # Async actions
-│   ├── App.tsx         # Main app component
-│   └── main.tsx        # Entry point
-├── public/             # Static assets
-├── .github/
-│   └── workflows/      # GitHub Actions CI/CD
-├── db.json            # JSON Server database
-└── vite.config.ts     # Vite configuration
-```
+Ferramentas
 
-## 🎨 Key Features Implementation
+ESLint
 
-### Authentication Flow
-- Login with email/password or OAuth providers
-- Protected routes with automatic redirection
-- Session management with Clerk
-- Logout functionality
+PostCSS
 
-### Kanban Board
-- Drag-and-drop task management
-- Multiple column support
-- Task creation with form validation
-- Real-time updates
+GitHub Actions (CI/CD)
 
-### State Management
-- Redux Toolkit for global state
-- Async thunks for API calls
-- Optimistic UI updates
+🚀 Execução do Projeto
+Pré-requisitos
 
-## 🤝 Team
+Node.js 20+
 
-This project was developed collaboratively by:
+npm
 
-- [Caio Cavalcanti](https://www.linkedin.com/in/caiohfcavalcanti/) - Frontend Developer
-- [Décio Francis](https://www.linkedin.com/in/deciofrancis/) - Frontend Developer
-- [Deividson Omédio](https://www.linkedin.com/in/deividson-omedio/) - Frontend Developer
-- [Glauce Duarte](https://www.linkedin.com/in/glauce-da-silva-duarte-98004529/) - Frontend Developer
-- [Jose Tadeu](https://www.linkedin.com/in/josé-tadeu-nascimento/) - Frontend Developer
-- [Ruan Lourenço](https://www.linkedin.com/in/ruan-lourenço/) - Frontend Developer
+Conta no Clerk
 
-## 📝 License
+Passos básicos
+git clone https://github.com/seu-usuario/kanban-project-online.git
+cd kanban-project-online
+npm install
 
-This project is open source and available for educational purposes.
 
-## 🙏 Acknowledgments
+Configurar variáveis de ambiente (.env.local) e iniciar:
 
-- UOL for the technical challenge opportunity
-- Clerk for authentication infrastructure
-- The React community for excellent documentation
+npx json-server db.json --port 3000
+npm run dev
 
----
 
-**Note:** This project demonstrates modern web development practices including TypeScript, React hooks, state management, authentication, and responsive design. It showcases the ability to build full-featured, production-ready applications.
+Acesse:
+👉 http://localhost:5173/kanban-react/
+
+📁 Estrutura do Projeto
+
+Organização clara por componentes, páginas, hooks e Redux
+
+Separação de responsabilidades
+
+Código tipado e escalável
+
+🤝 Colaboração
+
+Projeto desenvolvido em equipe durante o desafio técnico:
+
+Caio Cavalcanti
+
+Décio Francis
+
+Deividson Omédio
+
+Glauce Duarte
+
+José Tadeu
+
+Ruan Lourenço
+
+🎯 Observação Final
+
+Este projeto representa minha evolução prática no desenvolvimento frontend, com foco em React, TypeScript e boas práticas, servindo como base para projetos maiores e ambientes de produção.
